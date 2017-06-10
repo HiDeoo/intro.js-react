@@ -43,13 +43,13 @@ import { Steps, Hints } from 'intro.js-react';
 | --- | --- | :---: | :---: |
 | `enabled` | Defines if the steps are visible or not. <br> *Default: false.* | Boolean |  |
 | `initialStep` | Step index to start with when showing the steps. | Number | ✅ |
-| `steps` | All the steps. | Step[] | ✅ |
+| `steps` | All the steps. | [Step[]](https://github.com/HiDeoo/intro.js-react#step) | ✅ |
 | `onExit` | Callback called when the steps are disabled <br> *Required to force keeping track of the state when the steps are dismissed with an Intro.js event and not the `enabled` prop.* | Function <br> *(stepIndex)* | ✅ |
 | `onStart` | Callback called when the steps are enabled. | Function <br> *(stepIndex)* |  |
 | `onChange` | Callback called when the current step is changed. | Function <br> *(nextStepIndex, nextElement)*  |  |
 | `onBeforeChange` | Callback called before changing the current step. | Function <br> *(nextStepIndex, nextElement)* |  |
 | `onAfterChange` | Callback called after changing the current step. | Function <br> *(newStepIndex, newElement)* |  |
-| `options` | Intro.js options. | Object | | |
+| `options` | Intro.js options. | [Object](https://github.com/HiDeoo/intro.js-react#introjs-options) | | |
 
 ### Step
 
@@ -97,10 +97,10 @@ const steps = [
 | Name | Description | Type | Required |
 | --- | --- | :---: | :---: |
 | `enabled` | Defines if the hints are visible or not. <br> *Default: false.* | Boolean |  |
-| `hints` | All the hints. | Hint[] | ✅ |
+| `hints` | All the hints. | [Hint[]](https://github.com/HiDeoo/intro.js-react#hint) | ✅ |
 | `onClick` | Callback called when a hint is clicked. | Function <br> *( )* |  |
 | `onClose` | Callback called when a hint is closed. | Function <br> *( )*  |  |
-| `options` | Intro.js options. | Object | | |
+| `options` | Intro.js options. | [Object](https://github.com/HiDeoo/intro.js-react#introjs-options) | | |
 
 ### Hint
 
