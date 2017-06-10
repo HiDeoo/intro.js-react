@@ -1,0 +1,60 @@
+{
+  "name": "intro.js-react",
+  "version": "0.0.1",
+  "description": "Intro.js React Wrapper",
+  "main": "lib/index.js",
+  "scripts": {
+    "prebuild": "rimraf lib/*",
+    "build": "babel --out-dir lib src",
+    "build:watch": "npm run build -- --watch",
+    "lint": "eslint src",
+    "precommit": "lint-staged"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-eslint": "^7.2.3",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-object-rest-spread": "^6.23.0",
+    "babel-preset-env": "^1.5.2",
+    "babel-preset-react": "^6.24.1",
+    "eslint": "^3.19.0",
+    "eslint-config-airbnb": "^15.0.1",
+    "eslint-config-prettier": "^2.1.1",
+    "eslint-plugin-import": "^2.3.0",
+    "eslint-plugin-jsx-a11y": "^5.0.3",
+    "eslint-plugin-prettier": "^2.1.1",
+    "eslint-plugin-react": "^7.0.1",
+    "husky": "^0.13.4",
+    "intro.js": "^2.5.0",
+    "lint-staged": "^3.6.0",
+    "prettier": "^1.4.4",
+    "prop-types": "^15.5.10",
+    "react": "^15.5.4",
+    "rimraf": "^2.6.1"
+  },
+  "peerDependencies": {
+    "react": "^0.14.0 || ^15.0.0-0",
+    "intro.js": "^2.5.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HiDeoo/intro.js-react.git"
+  },
+  "keywords": [
+    "intro.js",
+    "react",
+    "wrapper"
+  ],
+  "author": "HiDeoo",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/HiDeoo/intro.js-react/issues"
+  },
+  "homepage": "https://github.com/HiDeoo/intro.js-react#readme",
+  "lint-staged": {
+    "*.js": [
+      "prettier --single-quote --trailing-comma es5 --print-width 120 --write",
+      "git add"
+    ]
+  }
+}
