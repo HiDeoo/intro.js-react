@@ -81,6 +81,14 @@ export default class Hints extends Component {
   }
 
   /**
+   * Lifecycle: componentWillUnmount.
+   * We use this even to hide the hints when the component is unmounted.
+   */
+  componentWillUnmount() {
+    this.introJs.hideHints();
+  }
+
+  /**
    * Installs Intro.js.
    */
   installIntroJs() {

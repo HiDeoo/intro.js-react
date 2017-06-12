@@ -91,6 +91,14 @@ export default class Steps extends Component {
   }
 
   /**
+   * Lifecycle: componentWillUnmount.
+   * We use this even to hide the steps when the component is unmounted.
+   */
+  componentWillUnmount() {
+    this.introJs.exit();
+  }
+
+  /**
    * Triggered when Intro.js steps are exited.
    */
   onExit = () => {
