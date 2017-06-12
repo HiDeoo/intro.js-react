@@ -115,7 +115,7 @@ const steps = [
 ```js
 <Hints
   enabled={hintsEnabled}
-  steps={hints}
+  hints={hints}
 />
 ```
 
