@@ -1,6 +1,6 @@
 {
   "name": "intro.js-react",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Intro.js React Wrapper",
   "main": "lib/index.js",
   "scripts": {
@@ -8,11 +8,12 @@
     "build": "babel --out-dir lib src",
     "build:watch": "npm run build -- --watch",
     "lint": "eslint src",
-    "precommit": "lint-staged",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage && open coverage/index.html",
-    "coveralls": "jest --coverage && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
+    "coveralls": "jest --coverage && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
+    "precommit": "lint-staged",
+    "prepublish": "npm run build"
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",
@@ -73,5 +74,9 @@
       "html",
       "lcov"
     ]
-  }
+  },
+  "files": [
+    "lib",
+    "src"
+  ]
 }
