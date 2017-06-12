@@ -84,6 +84,28 @@ describe('Steps', () => {
     expect(onExit).toHaveBeenCalledTimes(1);
   });
 
+  test('should call the onExit callback when unmounting if enabled', () => {
+    const onExit = jest.fn();
+
+    const wrapper = shallow(<Steps enabled initialStep={0} steps={steps} onExit={onExit} />, {
+      lifecycleExperimental: true,
+    });
+    wrapper.unmount();
+
+    expect(onExit).toHaveBeenCalledTimes(1);
+  });
+
+  test('should not call the onExit callback when unmounting if not enabled', () => {
+    const onExit = jest.fn();
+
+    const wrapper = shallow(<Steps initialStep={0} steps={steps} onExit={onExit} />, {
+      lifecycleExperimental: true,
+    });
+    wrapper.unmount();
+
+    expect(onExit).toHaveBeenCalledTimes(1);
+  });
+
   test('should call the onExit callback with the step number', () => {
     const onExit = jest.fn();
 

@@ -88,6 +88,8 @@ describe('Hints', () => {
     wrapper.setProps({ enabled: true });
 
     expect(wrapper.instance().renderHints).toHaveBeenCalledTimes(4);
+
+    wrapper.unmount();
   });
 
   test('should not call renderHints when the enabled, hints or options are not modified', () => {
