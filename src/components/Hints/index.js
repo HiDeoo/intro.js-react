@@ -81,21 +81,19 @@ export default class Hints extends Component {
   }
 
   /**
-   * Installs Intro.js if not already installed.
+   * Installs Intro.js.
    */
   installIntroJs() {
-    if (!this.introJs) {
-      this.introJs = introJs();
+    this.introJs = introJs();
 
-      const { onClick, onClose } = this.props;
+    const { onClick, onClose } = this.props;
 
-      if (onClick) {
-        this.introJs.onhintclick(onClick);
-      }
+    if (onClick) {
+      this.introJs.onhintclick(onClick);
+    }
 
-      if (onClose) {
-        this.introJs.onhintclose(onClose);
-      }
+    if (onClose) {
+      this.introJs.onhintclose(onClose);
     }
   }
 

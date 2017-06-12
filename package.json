@@ -8,28 +8,39 @@
     "build": "babel --out-dir lib src",
     "build:watch": "npm run build -- --watch",
     "lint": "eslint src",
-    "precommit": "lint-staged"
+    "precommit": "lint-staged",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage && open coverage/index.html",
+    "coveralls": "jest --coverage && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",
     "babel-eslint": "^7.2.3",
+    "babel-jest": "^20.0.3",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-plugin-transform-object-rest-spread": "^6.23.0",
     "babel-preset-env": "^1.5.2",
     "babel-preset-react": "^6.24.1",
+    "coveralls": "^2.13.1",
+    "enzyme": "^2.8.2",
     "eslint": "^3.19.0",
     "eslint-config-airbnb": "^15.0.1",
     "eslint-config-prettier": "^2.1.1",
     "eslint-plugin-import": "^2.3.0",
+    "eslint-plugin-jest": "^20.0.3",
     "eslint-plugin-jsx-a11y": "^5.0.3",
     "eslint-plugin-prettier": "^2.1.1",
     "eslint-plugin-react": "^7.0.1",
     "husky": "^0.13.4",
     "intro.js": "^2.5.0",
+    "jest": "^20.0.4",
     "lint-staged": "^3.6.0",
     "prettier": "^1.4.4",
     "prop-types": "^15.5.10",
     "react": "^15.5.4",
+    "react-dom": "^15.5.4",
+    "react-test-renderer": "^15.5.4",
     "rimraf": "^2.6.1"
   },
   "peerDependencies": {
@@ -55,6 +66,12 @@
     "*.js": [
       "prettier --single-quote --trailing-comma es5 --print-width 120 --write",
       "git add"
+    ]
+  },
+  "jest": {
+    "coverageReporters": [
+      "html",
+      "lcov"
     ]
   }
 }

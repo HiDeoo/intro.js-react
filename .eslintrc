@@ -3,10 +3,12 @@
   "extends": [
     "airbnb",
     "prettier",
-    "prettier/react"
+    "prettier/react",
+    "plugin:jest/recommended"
   ],
   "plugins": [
-    "prettier"
+    "prettier",
+    "jest"
   ],
   "rules": {
     "prettier/prettier": [2, { printWidth: 120, singleQuote: true, trailingComma: "es5" }],
@@ -18,6 +20,7 @@
   "env": {
     "browser": true,
     "es6": true,
+    "jest/globals": true,
   },
   "parserOptions": {
     "sourceType": "module",

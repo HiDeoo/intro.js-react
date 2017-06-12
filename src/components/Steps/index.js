@@ -98,9 +98,7 @@ export default class Steps extends Component {
 
     this.isVisible = false;
 
-    if (onExit) {
-      onExit(this.introJs._currentStep);
-    }
+    onExit(this.introJs._currentStep);
   };
 
   /**
@@ -152,17 +150,15 @@ export default class Steps extends Component {
   };
 
   /**
-   * Installs Intro.js if not already installed..
+   * Installs Intro.js.
    */
   installIntroJs() {
-    if (!this.introJs) {
-      this.introJs = introJs();
+    this.introJs = introJs();
 
-      this.introJs.onexit(this.onExit);
-      this.introJs.onbeforechange(this.onBeforeChange);
-      this.introJs.onafterchange(this.onAfterChange);
-      this.introJs.onchange(this.onChange);
-    }
+    this.introJs.onexit(this.onExit);
+    this.introJs.onbeforechange(this.onBeforeChange);
+    this.introJs.onafterchange(this.onAfterChange);
+    this.introJs.onchange(this.onChange);
   }
 
   /**
@@ -184,17 +180,18 @@ export default class Steps extends Component {
 
     if (enabled && steps.length > 0 && !this.isVisible) {
       this.introJs.start();
-      this.introJs.goToStepNumber(initialStep + 1);
 
       this.isVisible = true;
+
+      this.introJs.goToStepNumber(initialStep + 1);
 
       if (onStart) {
         onStart(this.introJs._currentStep);
       }
     } else if (!enabled && this.isVisible) {
-      this.introJs.exit();
-
       this.isVisible = false;
+
+      this.introJs.exit();
     }
   }
 
