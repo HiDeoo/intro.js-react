@@ -6,12 +6,17 @@ A small React wrapper around [Intro.js](http://introjs.com/). The wrapper provid
 
 ## Quicklinks
 
+- [Example](#example)
 - [Installation](#installation)
 - [Usage](#usage)
   - [Steps](#steps)
   - [Hints](#hints)
 - [Intro.js API](#introjs-api)
 - [Intro.js options](#introjs-options)
+
+## Example
+
+You can find a small example [here on codesandbox.io](https://codesandbox.io/embed/o2A4gwXE3?hidenavigation=1).
 
 ## Installation
 
