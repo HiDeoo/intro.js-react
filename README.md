@@ -1,6 +1,17 @@
 # intro.js-react
 
+[![Build Status](https://travis-ci.org/HiDeoo/intro.js-react.svg?branch=master)](https://travis-ci.org/HiDeoo/intro.js-react) [![Coverage Status](https://coveralls.io/repos/github/HiDeoo/intro.js-react/badge.svg?branch=master)](https://coveralls.io/github/HiDeoo/intro.js-react?branch=master)
+
 A small React wrapper around [Intro.js](http://introjs.com/). The wrapper provides support for both steps and hints.
+
+## Quicklinks
+
+- [Installation](#installation)
+- [Usage](#usage)
+  - [Steps](#steps)
+  - [Hints](#hints)
+- [Intro.js API](#introjs-api)
+- [Intro.js options](#introjs-options)
 
 ## Installation
 
@@ -43,13 +54,13 @@ import { Steps, Hints } from 'intro.js-react';
 | --- | --- | :---: | :---: |
 | `enabled` | Defines if the steps are visible or not. <br> *Default: false.* | Boolean |  |
 | `initialStep` | Step index to start with when showing the steps. | Number | ✅ |
-| `steps` | All the steps. | [Step[]](https://github.com/HiDeoo/intro.js-react#step) | ✅ |
+| `steps` | All the steps. | [Step[]](#step) | ✅ |
 | `onExit` | Callback called when the steps are disabled <br> *Required to force keeping track of the state when the steps are dismissed with an Intro.js event and not the `enabled` prop.* | Function <br> *(stepIndex)* | ✅ |
 | `onStart` | Callback called when the steps are enabled. | Function <br> *(stepIndex)* |  |
 | `onChange` | Callback called when the current step is changed. | Function <br> *(nextStepIndex, nextElement)*  |  |
 | `onBeforeChange` | Callback called before changing the current step. | Function <br> *(nextStepIndex, nextElement)* |  |
 | `onAfterChange` | Callback called after changing the current step. | Function <br> *(newStepIndex, newElement)* |  |
-| `options` | Intro.js options. | [Object](https://github.com/HiDeoo/intro.js-react#introjs-options) | | |
+| `options` | Intro.js options. | [Object](#introjs-options) | | |
 
 ### Step
 
@@ -97,10 +108,10 @@ const steps = [
 | Name | Description | Type | Required |
 | --- | --- | :---: | :---: |
 | `enabled` | Defines if the hints are visible or not. <br> *Default: false.* | Boolean |  |
-| `hints` | All the hints. | [Hint[]](https://github.com/HiDeoo/intro.js-react#hint) | ✅ |
+| `hints` | All the hints. | [Hint[]](#hint) | ✅ |
 | `onClick` | Callback called when a hint is clicked. | Function <br> *( )* |  |
 | `onClose` | Callback called when a hint is closed. | Function <br> *( )*  |  |
-| `options` | Intro.js options. | [Object](https://github.com/HiDeoo/intro.js-react#introjs-options) | | |
+| `options` | Intro.js options. | [Object](#introjs-options) | | |
 
 ### Hint
 
@@ -124,11 +135,23 @@ const hints = [
 | `hint` | The tooltip text. | String | ✅ |
 | `hintPosition` | Position of the tooltip. | String | | |
 
+## Intro.js API
+
+If for some reasons you need to use the [Intro.js API](http://introjs.com/docs/), you can still get the Intro.js instance by using a ref on either the `<Steps />` or `<Hints />` components and using `this.refName.introJs`.
+
+```js
+<Hints
+  enabled={hintsEnabled}
+  steps={hints}
+  ref={hints => (this.hints = hints)}
+/>
+```
+
 ## Intro.js options
 
 You can find more details regarding Intro.js options and their default values in [the documentation](http://introjs.com/docs/) or directly in [their code](https://github.com/usablica/intro.js/blob/master/intro.js#L32).
 
-You can also adjust default options for both components in the `helpers/defaultProps.js` file.
+The wrapper overrides some Intro.js default options in the `helpers/defaultProps.js` file.
 
 | Name | Description | Type |
 | --- | --- | :---: |
