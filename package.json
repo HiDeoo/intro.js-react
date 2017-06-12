@@ -5,7 +5,7 @@
   "main": "lib/index.js",
   "scripts": {
     "prebuild": "rimraf lib/*",
-    "build": "babel --out-dir lib src",
+    "build": "babel --ignore '**/*.test.js' --out-dir lib src",
     "build:watch": "npm run build -- --watch",
     "lint": "eslint src",
     "test": "jest",
