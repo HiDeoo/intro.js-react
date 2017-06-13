@@ -76,6 +76,7 @@ import { Steps, Hints } from 'intro.js-react';
 | `onChange` | Callback called when the current step is changed. | Function <br> *(nextStepIndex, nextElement)*  |  |
 | `onBeforeChange` | Callback called before changing the current step. | Function <br> *(nextStepIndex, nextElement)* |  |
 | `onAfterChange` | Callback called after changing the current step. | Function <br> *(newStepIndex, newElement)* |  |
+| `onComplete` | Callback called when all the steps are completed. | Function <br> *()* |  |
 | `options` | Intro.js options. | [Object](#introjs-options) | | |
 
 ### Step

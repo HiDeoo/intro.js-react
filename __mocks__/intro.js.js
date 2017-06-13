@@ -80,6 +80,7 @@ class IntroJsMock {
   removeHints() {}
   showHints() {}
   hideHints() {}
+  oncomplete() {}
   /* eslint-enable class-methods-use-this */
 }
 

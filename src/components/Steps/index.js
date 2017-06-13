@@ -30,6 +30,7 @@ export default class Steps extends Component {
     onBeforeChange: PropTypes.func,
     onAfterChange: PropTypes.func,
     onChange: PropTypes.func,
+    onComplete: PropTypes.func,
     options: introJsPropTypes.options,
   };
 
@@ -43,6 +44,7 @@ export default class Steps extends Component {
     onBeforeChange: null,
     onAfterChange: null,
     onChange: null,
+    onComplete: null,
     options: introJsDefaultProps.options,
   };
 
@@ -167,6 +169,12 @@ export default class Steps extends Component {
     this.introJs.onbeforechange(this.onBeforeChange);
     this.introJs.onafterchange(this.onAfterChange);
     this.introJs.onchange(this.onChange);
+
+    const { onComplete } = this.props;
+
+    if (onComplete) {
+      this.introJs.oncomplete(onComplete);
+    }
   }
 
   /**

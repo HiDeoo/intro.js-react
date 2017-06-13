@@ -17,7 +17,7 @@ const steps = [
 
 describe('Steps', () => {
   test('should render nothing', () => {
-    const tree = renderer.create(<Steps initialStep={0} steps={[]} onExit={() => {}} />).toJSON();
+    const tree = renderer.create(<Steps initialStep={0} steps={[]} onExit={() => {}} onComplete={() => {}} />).toJSON();
 
     expect(tree).toMatchSnapshot();
   });
