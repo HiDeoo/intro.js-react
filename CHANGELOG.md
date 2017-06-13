@@ -1,3 +1,7 @@
+## 0.1.2
+
+* Add onComplete callback for Steps.
+
 ## 0.1.1
 
 * Hide steps & hints when unmounting.
