@@ -160,6 +160,17 @@ export default class Steps extends Component {
   };
 
   /**
+   * Triggered when completing all the steps.
+   */
+  onComplete = () => {
+    const { onComplete } = this.props;
+
+    if (onComplete) {
+      onComplete();
+    }
+  };
+
+  /**
    * Installs Intro.js.
    */
   installIntroJs() {
@@ -169,12 +180,7 @@ export default class Steps extends Component {
     this.introJs.onbeforechange(this.onBeforeChange);
     this.introJs.onafterchange(this.onAfterChange);
     this.introJs.onchange(this.onChange);
-
-    const { onComplete } = this.props;
-
-    if (onComplete) {
-      this.introJs.oncomplete(onComplete);
-    }
+    this.introJs.oncomplete(this.onComplete);
   }
 
   /**

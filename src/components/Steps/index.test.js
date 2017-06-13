@@ -17,7 +17,7 @@ const steps = [
 
 describe('Steps', () => {
   test('should render nothing', () => {
-    const tree = renderer.create(<Steps initialStep={0} steps={[]} onExit={() => {}} onComplete={() => {}} />).toJSON();
+    const tree = renderer.create(<Steps initialStep={0} steps={[]} onExit={() => {}} />).toJSON();
 
     expect(tree).toMatchSnapshot();
   });
@@ -55,6 +55,17 @@ describe('Steps', () => {
     wrapper.setProps({ enabled: true });
 
     expect(onStart).toHaveBeenCalledTimes(1);
+  });
+
+  test('should call the onComplete callback when the tutorial is done', () => {
+    const onComplete = jest.fn();
+
+    const wrapper = shallow(<Steps enabled initialStep={0} steps={steps} onExit={() => {}} onComplete={onComplete} />, {
+      lifecycleExperimental: true,
+    });
+    wrapper.instance().onComplete();
+
+    expect(onComplete).toHaveBeenCalledTimes(1);
   });
 
   test('should call the onStart callback with the step number', () => {

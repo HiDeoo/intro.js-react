@@ -1,3 +1,7 @@
+## 0.1.3
+
+* Improve consistency around callbacks in the Steps component.
+
 ## 0.1.2
 
 * Add onComplete callback for Steps.
