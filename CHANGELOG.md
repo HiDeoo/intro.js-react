@@ -1,3 +1,7 @@
+## 0.1.4
+
+* `element` CSS selector are no longer required for a Step so floating steps can be created more easily.
+
 ## 0.1.3
 
 * Improve consistency around callbacks in the Steps component.

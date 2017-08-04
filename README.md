@@ -103,7 +103,7 @@ const steps = [
 
 | Name | Description | Type | Required |
 | --- | --- | :---: | :---: |
-| `element` | CSS selector to use for the step. | String | ✅ |
+| `element` | CSS selector to use for the step. | String | |
 | `intro` | The tooltip text. | String | ✅ |
 | `position` | Position of the tooltip. | String | |
 | `tooltipClass` | CSS class of the tooltip. | String | |
