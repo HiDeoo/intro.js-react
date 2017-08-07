@@ -75,8 +75,12 @@ class IntroJsMock {
     }
   }
 
+  setOptions(options) {
+    this._options = options;
+    this._introItems = options.steps;
+  }
+
   /* eslint-disable class-methods-use-this */
-  setOptions() {}
   removeHints() {}
   showHints() {}
   hideHints() {}

@@ -171,6 +171,20 @@ export default class Steps extends Component {
   };
 
   /**
+   * Updates the element associated to a step based on its index.
+   * This is useful when the associated element is not present in the DOM on page load.
+   * @param  {number} stepIndex - The index of the step to update.
+   */
+  updateStepElement = stepIndex => {
+    const element = document.querySelector(this.introJs._options.steps[stepIndex].element);
+
+    if (element) {
+      this.introJs._introItems[stepIndex].element = element;
+      this.introJs._introItems[stepIndex].position = this.introJs._options.steps[stepIndex].position || 'auto';
+    }
+  };
+
+  /**
    * Installs Intro.js.
    */
   installIntroJs() {
