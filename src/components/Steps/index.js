@@ -171,6 +171,17 @@ export default class Steps extends Component {
   };
 
   /**
+   * Function for updating step element selector
+   * Needed in case your element is not present in DOM on page load
+   */
+  updateStepSelector = stepNumber => {
+    this.introJs._introItems[stepNumber].element = document.querySelector(
+      this.introJs._options.steps[stepNumber].element
+    );
+    this.introJs._introItems[stepNumber].position = this.introJs._options.steps[stepNumber].position || 'auto';
+  };
+
+  /**
    * Installs Intro.js.
    */
   installIntroJs() {
