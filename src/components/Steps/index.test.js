@@ -91,6 +91,7 @@ describe('Steps', () => {
       lifecycleExperimental: true,
     });
     wrapper.setProps({ enabled: false });
+    wrapper.instance().onComplete();
 
     expect(onExit).toHaveBeenCalledTimes(1);
   });
@@ -232,5 +233,31 @@ describe('Steps', () => {
     wrapper.setProps({ enabled: true });
 
     expect(onAfterChange).toHaveBeenCalledWith(1, null);
+  });
+
+  test('should not update the element if it does not exist when calling updateStepElement()', () => {
+    const wrapper = shallow(<Steps initialStep={0} steps={steps} onExit={() => {}} />, {
+      lifecycleExperimental: true,
+    });
+    wrapper.setProps({ enabled: true });
+
+    wrapper.instance().updateStepElement(0);
+
+    expect(wrapper.instance().introJs._introItems[0].element).not.toEqual(expect.any(HTMLDivElement));
+  });
+
+  test('should update the element if it does exist when calling updateStepElement()', () => {
+    const wrapper = shallow(<Steps initialStep={0} steps={steps} onExit={() => {}} />, {
+      lifecycleExperimental: true,
+    });
+    wrapper.setProps({ enabled: true });
+
+    const div = document.createElement('div');
+    div.className = 'test';
+    document.body.appendChild(div);
+
+    wrapper.instance().updateStepElement(0);
+
+    expect(wrapper.instance().introJs._introItems[0].element).toEqual(expect.any(HTMLDivElement));
   });
 });

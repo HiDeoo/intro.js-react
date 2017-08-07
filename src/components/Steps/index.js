@@ -171,14 +171,17 @@ export default class Steps extends Component {
   };
 
   /**
-   * Function for updating step element selector
-   * Needed in case your element is not present in DOM on page load
+   * Updates the element associated to a step based on its index.
+   * This is useful when the associated element is not present in the DOM on page load.
+   * @param  {number} stepIndex - The index of the step to update.
    */
-  updateStepSelector = stepNumber => {
-    this.introJs._introItems[stepNumber].element = document.querySelector(
-      this.introJs._options.steps[stepNumber].element
-    );
-    this.introJs._introItems[stepNumber].position = this.introJs._options.steps[stepNumber].position || 'auto';
+  updateStepElement = stepIndex => {
+    const element = document.querySelector(this.introJs._options.steps[stepIndex].element);
+
+    if (element) {
+      this.introJs._introItems[stepIndex].element = element;
+      this.introJs._introItems[stepIndex].position = this.introJs._options.steps[stepIndex].position || 'auto';
+    }
   };
 
   /**

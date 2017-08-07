@@ -109,38 +109,16 @@ const steps = [
 | `tooltipClass` | CSS class of the tooltip. | String | |
 | `highlightClass` | CSS class of the helperLayer. | String |  |  |
 
-
 ### Dynamic elements
 
-If you want to use intro.js with dynamically created elements you have to refresh intro element selector.
-To do that you can use `updateStepSelector` method.
-Example:
+If you want to use Intro.js Steps with dynamically created elements, you have to update the element associated to the step when it's available.
+
+To do that, you can use the `updateStepElement()` API and pass to it the index of the step to update:
 
 ```js
-class MainApp extends Component {
-
-  constructor(props) {
-    super(props);
-    this.onBeforeChange = this.onBeforeChange.bind(this);
-  }
-
-  onBeforeChange(nextStepIndex) {
-    this.step && this.step.updateStepSelector(nextStepIndex);
-  }
-
-  render() {
-    return (
-      <Steps
-        enabled={stepsEnabled}
-        steps={steps}
-        initialStep={initialStep}
-        onExit={this.onExit}
-        onBeforeChange={this.onBeforeChange}
-        ref={element => {
-          this.step = element;
-        }}
-      />
-    )
+onBeforeChange = nextStepIndex => {
+  if (nextStepIndex === 4) {
+    this.step.updateStepElement(nextStepIndex);
   }
 }
 ```
