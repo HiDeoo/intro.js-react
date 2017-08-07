@@ -1,3 +1,7 @@
+## 0.1.5
+
+* Add the `updateStepElement()` API to update the element associated to a step based on its index. This is useful when the associated element is not present in the DOM on page load.
+
 ## 0.1.4
 
 * `element` CSS selector are no longer required for a Step so floating steps can be created more easily.
