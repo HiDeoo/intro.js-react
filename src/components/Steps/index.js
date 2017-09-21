@@ -30,6 +30,7 @@ export default class Steps extends Component {
     onBeforeChange: PropTypes.func,
     onAfterChange: PropTypes.func,
     onChange: PropTypes.func,
+    onPreventChange: PropTypes.func,
     onComplete: PropTypes.func,
     options: introJsPropTypes.options,
   };
@@ -44,6 +45,7 @@ export default class Steps extends Component {
     onBeforeChange: null,
     onAfterChange: null,
     onChange: null,
+    onPreventChange: null,
     onComplete: null,
     options: introJsDefaultProps.options,
   };
@@ -113,18 +115,28 @@ export default class Steps extends Component {
 
   /**
    * Triggered before changing step.
-   * @param  {HTMLElement} element - The element associated to the next step.
+   * @return {Boolean} Returning `false` will prevent the step transition.
    */
-  onBeforeChange = element => {
+  onBeforeChange = () => {
     if (!this.isVisible) {
-      return;
+      return true;
     }
 
-    const { onBeforeChange } = this.props;
+    const { onBeforeChange, onPreventChange } = this.props;
 
     if (onBeforeChange) {
-      onBeforeChange(this.introJs._currentStep, element);
+      const continueStep = onBeforeChange(this.introJs._currentStep);
+
+      if (continueStep === false && onPreventChange) {
+        setTimeout(() => {
+          onPreventChange(this.introJs._currentStep);
+        }, 0);
+      }
+
+      return continueStep;
     }
+
+    return true;
   };
 
   /**

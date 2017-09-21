@@ -1,3 +1,11 @@
+## 0.2.0 (unpublished)
+
+* 💥 `onBeforeChange` is no longer called with the `nextElement` parameter.
+
+
+* If at least intro.js 2.8.0 is used, `false` can be returned in `onBeforeChange` to prevent transitioning to the next / previous step.
+* Add the `onPreventChange` callback called when a transition is prevented by returning `false` in `onBeforeChange`.
+
 ## 0.1.5
 
 * Add the `updateStepElement()` API to update the element associated to a step based on its index. This is useful when the associated element is not present in the DOM on page load.

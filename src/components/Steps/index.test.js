@@ -4,6 +4,8 @@ import { shallow } from 'enzyme';
 
 import Steps from './index';
 
+jest.useFakeTimers();
+
 /**
  * Steps.
  * @type {Step[]}
@@ -194,7 +196,7 @@ describe('Steps', () => {
     expect(onBeforeChange).toHaveBeenCalledTimes(1);
   });
 
-  test('should call the onBeforeChange callback with the step number and the new element', () => {
+  test('should call the onBeforeChange callback with the step number', () => {
     const onBeforeChange = jest.fn();
 
     const wrapper = shallow(<Steps initialStep={0} steps={steps} onExit={() => {}} onBeforeChange={onBeforeChange} />, {
@@ -202,7 +204,29 @@ describe('Steps', () => {
     });
     wrapper.setProps({ enabled: true });
 
-    expect(onBeforeChange).toHaveBeenCalledWith(1, null);
+    expect(onBeforeChange).toHaveBeenCalledWith(1);
+  });
+
+  test('should call the onPreventChange callback if onBeforeChange returned false to prevent transition', () => {
+    const onPreventChange = jest.fn();
+
+    const wrapper = shallow(
+      <Steps
+        initialStep={0}
+        steps={steps}
+        onExit={() => {}}
+        onBeforeChange={() => false}
+        onPreventChange={onPreventChange}
+      />,
+      {
+        lifecycleExperimental: true,
+      }
+    );
+    wrapper.setProps({ enabled: true });
+
+    jest.runAllTimers();
+
+    expect(onPreventChange).toHaveBeenCalled();
   });
 
   test('should not call the onAfterChange callback when disabled', () => {

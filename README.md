@@ -74,8 +74,9 @@ import { Steps, Hints } from 'intro.js-react';
 | `onExit` | Callback called when the steps are disabled <br> *Required to force keeping track of the state when the steps are dismissed with an Intro.js event and not the `enabled` prop.* | Function <br> *(stepIndex)* | ✅ |
 | `onStart` | Callback called when the steps are enabled. | Function <br> *(stepIndex)* |  |
 | `onChange` | Callback called when the current step is changed. | Function <br> *(nextStepIndex, nextElement)*  |  |
-| `onBeforeChange` | Callback called before changing the current step. | Function <br> *(nextStepIndex, nextElement)* |  |
+| `onBeforeChange` | Callback called before changing the current step. <br> *If you want to prevent the transition to the next / previous step, you can return `false` in this callback (available since intro.js 2.8.0).* | Function <br> *(nextStepIndex)* |  |
 | `onAfterChange` | Callback called after changing the current step. | Function <br> *(newStepIndex, newElement)* |  |
+| `onPreventChange` | Callback called if you prevented transitioning to a new step by returning `false` in `onBeforeChange`. | Function <br> *(stepIndex)* |  |
 | `onComplete` | Callback called when all the steps are completed. | Function <br> *()* |  |
 | `options` | Intro.js options. | [Object](#introjs-options) | | |
 
@@ -116,9 +117,17 @@ If you want to use Intro.js Steps with dynamically created elements, you have to
 To do that, you can use the `updateStepElement()` API and pass to it the index of the step to update:
 
 ```js
+<Steps
+  enabled={stepsEnabled}
+  steps={steps}
+  ref={steps => (this.steps = steps)}
+/>
+```
+
+```js
 onBeforeChange = nextStepIndex => {
   if (nextStepIndex === 4) {
-    this.step.updateStepElement(nextStepIndex);
+    this.steps.updateStepElement(nextStepIndex);
   }
 }
 ```
