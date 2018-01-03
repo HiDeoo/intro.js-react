@@ -2,7 +2,7 @@
 
 * 💥 `onBeforeChange` is no longer called with the `nextElement` parameter.
 
-
+* Add React 16 support.
 * If at least intro.js 2.8.0 is used, `false` can be returned in `onBeforeChange` to prevent transitioning to the next / previous step.
 * Add the `onPreventChange` callback called when a transition is prevented by returning `false` in `onBeforeChange`.
 
