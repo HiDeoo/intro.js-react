@@ -26,6 +26,7 @@ export default class Steps extends Component {
       })
     ).isRequired,
     onStart: PropTypes.func,
+    onBeforeExit: PropTypes.func,
     onExit: PropTypes.func.isRequired,
     onBeforeChange: PropTypes.func,
     onAfterChange: PropTypes.func,
@@ -42,6 +43,7 @@ export default class Steps extends Component {
   static defaultProps = {
     enabled: false,
     onStart: null,
+    onBeforeExit: null,
     onBeforeChange: null,
     onAfterChange: null,
     onChange: null,
@@ -101,6 +103,19 @@ export default class Steps extends Component {
   componentWillUnmount() {
     this.introJs.exit();
   }
+
+  /**
+   * Trigger before exiting the steps
+   * @return {Boolean} Returning `false` will prevent the exit.
+   */
+   onBeforeExit = () => {
+     const { onBeforeExit } = this.props;
+
+     if (onBeforeExit) {
+       return onBeforeExit(this.introJs._currentStep);
+     }
+     return true;
+   }
 
   /**
    * Triggered when Intro.js steps are exited.
@@ -202,6 +217,7 @@ export default class Steps extends Component {
   installIntroJs() {
     this.introJs = introJs();
 
+    this.introJs.onbeforeexit(this.onBeforeExit);
     this.introJs.onexit(this.onExit);
     this.introJs.onbeforechange(this.onBeforeChange);
     this.introJs.onafterchange(this.onAfterChange);
