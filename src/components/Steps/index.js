@@ -106,13 +106,15 @@ export default class Steps extends Component {
 
   /**
    * Trigger before exiting the steps
+   * @return {Boolean} Returning `false` will prevent the exit.
    */
    onBeforeExit = () => {
      const { onBeforeExit } = this.props;
 
      if (onBeforeExit) {
-       onBeforeExit(this.introJs._currentStep);
+       return onBeforeExit(this.introJs._currentStep);
      }
+     return true;
    }
 
   /**
