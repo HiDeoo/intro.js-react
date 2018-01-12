@@ -27,6 +27,7 @@ export default class Steps extends Component {
     ).isRequired,
     onStart: PropTypes.func,
     onExit: PropTypes.func.isRequired,
+    onBeforeExit: PropTypes.func,
     onBeforeChange: PropTypes.func,
     onAfterChange: PropTypes.func,
     onChange: PropTypes.func,
@@ -42,6 +43,7 @@ export default class Steps extends Component {
   static defaultProps = {
     enabled: false,
     onStart: null,
+    onBeforeExit: null,
     onBeforeChange: null,
     onAfterChange: null,
     onChange: null,
@@ -111,6 +113,23 @@ export default class Steps extends Component {
     this.isVisible = false;
 
     onExit(this.introJs._currentStep);
+  };
+
+  /**
+   * Triggered before changing step.
+   * @return {Boolean} Returning `false` will prevent the step transition.
+   */
+  onBeforeExit = () => {
+    if (!this.isVisible) {
+      return true;
+    }
+
+    const { onBeforeExit } = this.props;
+
+    if (onBeforeExit) {
+      return onBeforeExit(this.introJs._currentStep);
+    }
+    return true;
   };
 
   /**
@@ -203,6 +222,7 @@ export default class Steps extends Component {
     this.introJs = introJs();
 
     this.introJs.onexit(this.onExit);
+    this.introJs.onbeforeexit(this.onBeforeExit);
     this.introJs.onbeforechange(this.onBeforeChange);
     this.introJs.onafterchange(this.onAfterChange);
     this.introJs.onchange(this.onChange);

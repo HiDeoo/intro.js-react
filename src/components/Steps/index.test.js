@@ -177,6 +177,46 @@ describe('Steps', () => {
     expect(onChange).toHaveBeenCalledWith(1, null);
   });
 
+  test('should not call the onBeforeExit callback when disabled', () => {
+    const onBeforeExit = jest.fn();
+
+    renderer.create(<Steps initialStep={0} steps={steps} onExit={() => {}} onBeforeExit={onBeforeExit} />);
+
+    expect(onBeforeExit).not.toHaveBeenCalled();
+  });
+
+  test('should call the onBeforeExit callback when disabled while being enabled', () => {
+    const onBeforeExit = jest.fn();
+
+    const wrapper = shallow(
+      <Steps enabled initialStep={0} steps={steps} onExit={() => {}} onBeforeExit={onBeforeExit} />,
+      {
+        lifecycleExperimental: true,
+      }
+    );
+    wrapper.setProps({ enabled: false });
+    wrapper.instance().onComplete();
+
+    expect(onBeforeExit).toHaveBeenCalledTimes(1);
+  });
+
+  test('should call the onBeforeExit callback with the step number', () => {
+    const onBeforeExit = jest.fn();
+
+    const wrapper = shallow(
+      <Steps enabled initialStep={0} steps={steps} onExit={() => {}} onBeforeExit={onBeforeExit} />,
+      {
+        lifecycleExperimental: true,
+      }
+    );
+    wrapper.setProps({ enabled: false });
+    expect(onBeforeExit).toHaveBeenCalledWith(1);
+    wrapper.setProps({ enabled: true, initialStep: 10 });
+    wrapper.setProps({ enabled: false });
+
+    expect(onBeforeExit).toHaveBeenCalledWith(11);
+  });
+
   test('should not call the onBeforeChange callback when disabled', () => {
     const onBeforeChange = jest.fn();
 

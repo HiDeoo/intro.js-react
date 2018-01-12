@@ -72,6 +72,7 @@ import { Steps, Hints } from 'intro.js-react';
 | `initialStep` | Step index to start with when showing the steps. | Number | ✅ |
 | `steps` | All the steps. | [Step[]](#step) | ✅ |
 | `onExit` | Callback called when the steps are disabled <br> *Required to force keeping track of the state when the steps are dismissed with an Intro.js event and not the `enabled` prop.* | Function <br> *(stepIndex)* | ✅ |
+| `onBeforeExit` | Callback called before exiting the intro. <br> *If you want to prevent exiting the intro, you can return `false` in this callback (available since intro.js 0.2.7).* | Function <br> *(stepIndex)* |  |
 | `onStart` | Callback called when the steps are enabled. | Function <br> *(stepIndex)* |  |
 | `onChange` | Callback called when the current step is changed. | Function <br> *(nextStepIndex, nextElement)*  |  |
 | `onBeforeChange` | Callback called before changing the current step. <br> *If you want to prevent the transition to the next / previous step, you can return `false` in this callback (available since intro.js 2.8.0).* | Function <br> *(nextStepIndex)* |  |
