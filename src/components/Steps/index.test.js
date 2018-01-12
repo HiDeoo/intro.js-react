@@ -185,7 +185,7 @@ describe('Steps', () => {
     expect(onBeforeExit).not.toHaveBeenCalled();
   });
 
-  test('should call the onBeforeExit callback when disabled while being enabled', () => {
+  test('should call the onBeforeExit callback when disabling', () => {
     const onBeforeExit = jest.fn();
 
     const wrapper = shallow(
@@ -195,7 +195,6 @@ describe('Steps', () => {
       }
     );
     wrapper.setProps({ enabled: false });
-    wrapper.instance().onComplete();
 
     expect(onBeforeExit).toHaveBeenCalledTimes(1);
   });
@@ -210,11 +209,15 @@ describe('Steps', () => {
       }
     );
     wrapper.setProps({ enabled: false });
+
     expect(onBeforeExit).toHaveBeenCalledWith(1);
+    expect(onBeforeExit).toHaveBeenCalledTimes(1);
+
     wrapper.setProps({ enabled: true, initialStep: 10 });
     wrapper.setProps({ enabled: false });
 
     expect(onBeforeExit).toHaveBeenCalledWith(11);
+    expect(onBeforeExit).toHaveBeenCalledTimes(2);
   });
 
   test('should not call the onBeforeChange callback when disabled', () => {

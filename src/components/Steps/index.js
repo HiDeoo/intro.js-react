@@ -116,19 +116,16 @@ export default class Steps extends Component {
   };
 
   /**
-   * Triggered before changing step.
-   * @return {Boolean} Returning `false` will prevent the step transition.
+   * Triggered before exiting the intro.
+   * @return {Boolean} Returning `false` will prevent exiting the intro.
    */
   onBeforeExit = () => {
-    if (!this.isVisible) {
-      return true;
-    }
-
     const { onBeforeExit } = this.props;
 
     if (onBeforeExit) {
       return onBeforeExit(this.introJs._currentStep);
     }
+
     return true;
   };
 

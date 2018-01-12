@@ -16,6 +16,10 @@ class IntroJsMock {
   }
 
   exit() {
+    if (this.onBeforeExitFn) {
+      this.onBeforeExitFn();
+    }
+
     if (this.exitFn) {
       this.exitFn();
     }
@@ -40,10 +44,6 @@ class IntroJsMock {
 
     if (this.onAfterChangeFn) {
       this.onAfterChangeFn(null);
-    }
-
-    if (this.onBeforeExitFn) {
-      this.onBeforeExitFn();
     }
   }
 
