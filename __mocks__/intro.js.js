@@ -9,7 +9,17 @@ class IntroJsMock {
     }
   }
 
+  onbeforeexit(fn) {
+    if (fn) {
+      this.onBeforeExitFn = fn;
+    }
+  }
+
   exit() {
+    if (this.onBeforeExitFn) {
+      this.onBeforeExitFn();
+    }
+
     if (this.exitFn) {
       this.exitFn();
     }
