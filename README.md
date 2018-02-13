@@ -201,7 +201,7 @@ The wrapper overrides some Intro.js default options in the `helpers/defaultProps
 | `skipLabel` | Skip button label. | String |
 | `doneLabel` | Done button label. | String |
 | `hidePrev` | Hides the Previous button in the first step. | Boolean |
-| `hideNextl` | Hide the Next button in the last step. | Boolean |
+| `hideNext` | Hide the Next button in the last step. | Boolean |
 | `tooltipPosition` | Position of the tooltips. | String |
 | `tooltipClass` | CSS class of the tooltips. | String |
 | `highlightClass` | CSS class of the helperLayer. | String |
