@@ -98,4 +98,8 @@ class IntroJsMock {
   /* eslint-enable class-methods-use-this */
 }
 
-export const introJs = () => new IntroJsMock();
+const intro = () => new IntroJsMock();
+
+export const introJs = intro;
+
+export default intro;
