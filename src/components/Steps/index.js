@@ -18,7 +18,7 @@ export default class Steps extends Component {
     initialStep: PropTypes.number.isRequired,
     steps: PropTypes.arrayOf(
       PropTypes.shape({
-        element: PropTypes.string,
+        element: PropTypes.oneOfType([PropTypes.string, PropTypes.instanceOf(Element)]),
         intro: PropTypes.string.isRequired,
         position: introJsPropTypes.tooltipPosition,
         tooltipClass: PropTypes.string,
@@ -204,7 +204,13 @@ export default class Steps extends Component {
    * @param  {number} stepIndex - The index of the step to update.
    */
   updateStepElement = stepIndex => {
-    const element = document.querySelector(this.introJs._options.steps[stepIndex].element);
+    let element;
+
+    if (typeof this.introJs._options.steps[stepIndex].element === 'string') {
+      element = document.querySelector(this.introJs._options.steps[stepIndex].element);
+    } else {
+      element = this.introJs._options.steps[stepIndex].element;
+    }
 
     if (element) {
       this.introJs._introItems[stepIndex].element = element;

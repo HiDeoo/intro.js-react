@@ -97,7 +97,7 @@ const steps = [
     intro: 'test 2',
   },
   {
-    element: '.selector3',
+    element: document.querySelectorAll('.selector3')[0],
     intro: 'test 3',
   },
 ];
@@ -105,7 +105,7 @@ const steps = [
 
 | Name | Description | Type | Required |
 | --- | --- | :---: | :---: |
-| `element` | CSS selector to use for the step. | String | |
+| `element` | CSS selector to use for the step or DOM element | String or DOM element | |
 | `intro` | The tooltip text. | String | ✅ |
 | `position` | Position of the tooltip. | String | |
 | `tooltipClass` | CSS class of the tooltip. | String | |

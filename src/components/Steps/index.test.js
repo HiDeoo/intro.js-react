@@ -15,6 +15,10 @@ const steps = [
     element: '.test',
     intro: 'test',
   },
+  {
+    element: document.createElement('div'),
+    intro: 'test',
+  },
 ];
 
 describe('Steps', () => {
@@ -313,7 +317,7 @@ describe('Steps', () => {
     expect(wrapper.instance().introJs._introItems[0].element).not.toEqual(expect.any(HTMLDivElement));
   });
 
-  test('should update the element if it does exist when calling updateStepElement()', () => {
+  test('should update the element if it does exist when calling updateStepElement() for selector', () => {
     const wrapper = shallow(<Steps initialStep={0} steps={steps} onExit={() => {}} />, {
       lifecycleExperimental: true,
     });
@@ -321,6 +325,20 @@ describe('Steps', () => {
 
     const div = document.createElement('div');
     div.className = 'test';
+    document.body.appendChild(div);
+
+    wrapper.instance().updateStepElement(0);
+
+    expect(wrapper.instance().introJs._introItems[0].element).toEqual(expect.any(HTMLDivElement));
+  });
+
+  test('should update the element if it does exist when calling updateStepElement() for DOM element', () => {
+    const wrapper = shallow(<Steps initialStep={0} steps={steps} onExit={() => {}} />, {
+      lifecycleExperimental: true,
+    });
+    wrapper.setProps({ enabled: true });
+
+    const div = document.createElement('div');
     document.body.appendChild(div);
 
     wrapper.instance().updateStepElement(0);
