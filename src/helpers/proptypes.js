@@ -12,6 +12,9 @@ export const tooltipPosition = PropTypes.oneOf([
   'bottom-left-aligned',
   'bottom-middle-aligned',
   'bottom-right-aligned',
+  'top-left-aligned',
+  'top-middle-aligned',
+  'top-right-aligned',
   'auto',
 ]);
 
