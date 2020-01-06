@@ -2,6 +2,7 @@ import introJs from 'intro.js';
 import PropTypes from 'prop-types';
 import { Component } from 'react';
 
+import react2HTML from '../../helpers/react2HTML';
 import * as introJsPropTypes from '../../helpers/proptypes';
 import * as introJsDefaultProps from '../../helpers/defaultProps';
 
@@ -19,7 +20,7 @@ export default class Steps extends Component {
     steps: PropTypes.arrayOf(
       PropTypes.shape({
         element: PropTypes.string,
-        intro: PropTypes.string.isRequired,
+        intro: PropTypes.element | PropTypes.string,
         position: introJsPropTypes.tooltipPosition,
         tooltipClass: PropTypes.string,
         highlightClass: PropTypes.string,
@@ -232,7 +233,14 @@ export default class Steps extends Component {
   configureIntroJs() {
     const { options, steps } = this.props;
 
-    this.introJs.setOptions({ ...options, steps });
+    const renderedSteps = steps.map(step => {
+      return {
+        ...step,
+        intro: react2HTML(step.intro),
+      };
+    });
+
+    this.introJs.setOptions({ ...options, renderedSteps });
 
     this.isConfigured = true;
   }
