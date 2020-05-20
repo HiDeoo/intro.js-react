@@ -16,13 +16,13 @@
     "prepublish": "npm run build"
   },
   "devDependencies": {
-    "babel-cli": "^6.26.0",
+    "@babel/cli": "7.8.4",
+    "@babel/plugin-proposal-class-properties": "7.8.3",
+    "@babel/plugin-proposal-object-rest-spread": "7.9.6",
+    "@babel/preset-env": "7.9.6",
+    "@babel/preset-react": "7.9.4",
     "babel-eslint": "^7.2.3",
-    "babel-jest": "^20.0.3",
-    "babel-plugin-transform-class-properties": "^6.24.1",
-    "babel-plugin-transform-object-rest-spread": "^6.23.0",
-    "babel-preset-env": "^1.5.2",
-    "babel-preset-react": "^6.24.1",
+    "babel-jest": "26.0.1",
     "coveralls": "^3.0.1",
     "enzyme": "^2.8.2",
     "eslint": "^3.19.0",
@@ -35,7 +35,7 @@
     "eslint-plugin-react": "^7.0.1",
     "husky": "^0.13.4",
     "intro.js": "^2.9.3",
-    "jest": "^20.0.4",
+    "jest": "26.0.1",
     "lint-staged": "^3.6.0",
     "prettier": "^1.7.0",
     "prop-types": "^15.5.10",
@@ -45,8 +45,8 @@
     "rimraf": "^2.6.1"
   },
   "peerDependencies": {
-    "react": "^0.14.0 || ^15.0.0-0 || ^16.0.0-alpha",
-    "intro.js": "^2.5.0"
+    "intro.js": "^2.5.0",
+    "react": "^0.14.0 || ^15.0.0-0 || ^16.0.0-alpha"
   },
   "repository": {
     "type": "git",
