@@ -1,3 +1,7 @@
+## Unreleased
+
+* Add support for React elements to Steps's `intro` parameter.
+
 ## 0.2.0
 
 * 💥 `onBeforeChange` is no longer called with the `nextElement` parameter.

@@ -1,6 +1,7 @@
 import introJs from 'intro.js';
 import PropTypes from 'prop-types';
-import { Component } from 'react';
+import { Component, isValidElement } from 'react';
+import { renderToStaticMarkup } from 'react-dom/server';
 
 import * as introJsPropTypes from '../../helpers/proptypes';
 import * as introJsDefaultProps from '../../helpers/defaultProps';
@@ -19,7 +20,7 @@ export default class Steps extends Component {
     steps: PropTypes.arrayOf(
       PropTypes.shape({
         element: PropTypes.string,
-        intro: PropTypes.string.isRequired,
+        intro: PropTypes.node.isRequired,
         position: introJsPropTypes.tooltipPosition,
         tooltipClass: PropTypes.string,
         highlightClass: PropTypes.string,
@@ -232,7 +233,18 @@ export default class Steps extends Component {
   configureIntroJs() {
     const { options, steps } = this.props;
 
-    this.introJs.setOptions({ ...options, steps });
+    const sanitizedSteps = steps.map(step => {
+      if (isValidElement(step.intro)) {
+        return {
+          ...step,
+          intro: renderToStaticMarkup(step.intro),
+        };
+      }
+
+      return step;
+    });
+
+    this.introJs.setOptions({ ...options, steps: sanitizedSteps });
 
     this.isConfigured = true;
   }

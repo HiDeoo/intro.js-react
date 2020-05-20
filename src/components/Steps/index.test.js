@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOMServer from 'react-dom/server';
 import renderer from 'react-test-renderer';
 import { shallow } from 'enzyme';
 
@@ -22,6 +23,22 @@ describe('Steps', () => {
     const tree = renderer.create(<Steps initialStep={0} steps={[]} onExit={() => {}} />).toJSON();
 
     expect(tree).toMatchSnapshot();
+  });
+
+  test('should render a React element using renderToStaticMarkup', () => {
+    const Element = () => <div>react test</div>;
+
+    const spy = jest.spyOn(ReactDOMServer, 'renderToStaticMarkup');
+
+    const wrapper = shallow(
+      <Steps initialStep={0} steps={[{ element: '.test', intro: <Element /> }]} onExit={() => {}} />,
+      {
+        lifecycleExperimental: true,
+      }
+    );
+    wrapper.setProps({ enabled: true });
+
+    expect(spy).toHaveBeenCalledTimes(1);
   });
 
   test('should not call the onStart callback at mount time if not enabled', () => {
