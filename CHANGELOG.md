@@ -1,4 +1,4 @@
-## Unreleased
+## 0.3.0
 
 * Add support for React elements to Steps's `intro` parameter.
 
