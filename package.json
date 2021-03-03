@@ -3,6 +3,7 @@
   "version": "0.3.0",
   "description": "Intro.js React Wrapper",
   "main": "lib/index.js",
+  "types": "index.d.ts",
   "scripts": {
     "prebuild": "rimraf lib/*",
     "build": "babel --ignore '**/*.test.js' --out-dir lib src",
