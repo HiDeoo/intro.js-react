@@ -190,7 +190,7 @@ If for some reasons you need to use the [Intro.js API](http://introjs.com/docs/)
 
 ## Intro.js options
 
-You can find more details regarding Intro.js options and their default values in [the documentation](http://introjs.com/docs/) or directly in [their code](https://github.com/usablica/intro.js/blob/master/intro.js#L32).
+You can find more details regarding Intro.js options and their default values in [the documentation](http://introjs.com/docs/) or directly in [their code](https://github.com/usablica/intro.js/blob/31f7def834664efb26b964f0a2a03444ef29a32c/src/index.js#L34).
 
 The wrapper overrides some Intro.js default options in the `helpers/defaultProps.js` file.
 
