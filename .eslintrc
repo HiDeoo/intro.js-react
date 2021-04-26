@@ -13,14 +13,19 @@
   "rules": {
     "prettier/prettier": 2,
     "react/jsx-filename-extension": 0,
-    "import/no-extraneous-dependencies": [2, { devDependencies: true }],
+    "import/no-extraneous-dependencies": [
+      2,
+      {
+        "devDependencies": true
+      }
+    ],
     "no-underscore-dangle": 0,
-    "import/prefer-default-export": 0,
+    "import/prefer-default-export": 0
   },
   "env": {
     "browser": true,
     "es6": true,
-    "jest/globals": true,
+    "jest/globals": true
   },
   "parserOptions": {
     "sourceType": "module",
