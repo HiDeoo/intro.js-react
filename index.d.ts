@@ -1,4 +1,7 @@
 declare module 'intro.js-react' {
+  import * as React from 'react';
+  import { IntroJs, Options } from 'intro.js';
+
   interface Step {
     /**
      * CSS selector to use for the step.
@@ -7,7 +10,7 @@ declare module 'intro.js-react' {
     /**
      * The tooltip content.
      */
-    intro: string | JSX.Element;
+    intro: string | React.ReactNode;
     /**
      * Position of the tooltip.
      */
@@ -34,106 +37,7 @@ declare module 'intro.js-react' {
     /**
      * Position of the tooltip.
      */
-    hintPosition?: String;
-  }
-
-  interface Options {
-    /**
-     * Next button label.
-     */
-    nextLabel?: string;
-    /**
-     * Previous button label.
-     */
-    prevLabel?: string;
-    /**
-     * Skip button label.
-     */
-    skipLabel?: string;
-    /**
-     * Done button label.
-     */
-    doneLabel?: string;
-    /**
-     * Hides the Previous button in the first step.
-     */
-    hidePrev?: boolean;
-    /**
-     * Hide the Next button in the last step.
-     */
-    hideNext?: boolean;
-    /**
-     * Position of the tooltips.
-     */
-    tooltipPosition?: string;
-    /**
-     * CSS class of the tooltips.
-     */
-    tooltipClass?: string;
-    /**
-     * CSS class of the helperLayer.
-     */
-    highlightClass?: string;
-    /**
-     * Exit by pressing Escape.
-     */
-    exitOnEsc?: boolean;
-    /**
-     * Exit by clicking on the overlay layer.
-     */
-    exitOnOverlayClick?: boolean;
-    /**
-     * Show steps number in a red circle.
-     */
-    showStepNumbers?: boolean;
-    /**
-     * Allows navigation between steps using the keyboard.
-     */
-    keyboardNavigation?: boolean;
-    /**
-     * Show navigation buttons.
-     */
-    showButtons?: boolean;
-    /**
-     * Show bullets.
-     */
-    showBullets?: boolean;
-    /**
-     * Show progress indicator.
-     */
-    showProgress?: boolean;
-    /**
-     * Enables scrolling to hidden elements.
-     */
-    scrollToElement?: boolean;
-    /**
-     * Opacity of the overlay.
-     */
-    overlayOpacity?: number;
-    /**
-     * Padding when automatically scrolling to an element.
-     */
-    scrollPadding?: number;
-    /**
-     * Precedence of positions.
-     */
-    positionPrecedence?: string[];
-    /**
-     * Disables interaction inside elements.
-     */
-    disableInteraction?: boolean;
-    /**
-     * Position of the hints.
-     */
     hintPosition?: string;
-    /**
-     * 	Hint button label.
-     */
-    hintButtonLabel?: string;
-    /**
-     * Enables hint animations.
-     */
-    hintAnimation?: boolean;
   }
 
   interface StepsProps {
@@ -151,42 +55,44 @@ declare module 'intro.js-react' {
      */
     steps: Step[];
     /**
-     * Callback called when the steps are disabled
-     * Required to force keeping track of the state when the steps are dismissed with an Intro.js event and not the enabled prop.
+     * Callback called when the steps are disabled.
+     * Required to force keeping track of the state when the steps are dismissed with an Intro.js event and not the
+     * enabled prop.
      */
-    onExit(stepIndex: number): any;
+    onExit(stepIndex: number): void;
     /**
      * Callback called before exiting the intro.
      * If you want to prevent exiting the intro, you can return false in this callback (available since intro.js 0.2.7).
      */
-    onBeforeExit?(stepIndex: number): any;
+    onBeforeExit?(stepIndex: number): void | false;
     /**
      * Callback called when the steps are enabled.
      */
-    onStart?(stepIndex: number): any;
+    onStart?(stepIndex: number): void;
     /**
      * Callback called when the current step is changed.
      */
-    onChange?(nextStepIndex: number, nextElement: Element): any;
+    onChange?(nextStepIndex: number, nextElement: Element): void;
     /**
      * Callback called before changing the current step.
-     * If you want to prevent the transition to the next / previous step, you can return false in this callback (available since intro.js 2.8.0).
+     * If you want to prevent the transition to the next / previous step, you can return false in this callback
+     * (available since intro.js 2.8.0).
      */
-    onBeforeChange?(nextStepIndex: number): any;
+    onBeforeChange?(nextStepIndex: number): void | false;
     /**
      * Callback called after changing the current step.
      */
-    onAfterChange?(newStepIndex: number, newElement: Element): any;
+    onAfterChange?(newStepIndex: number, newElement: Element): void;
     /**
      * Callback called if you prevented transitioning to a new step by returning false in onBeforeChange.
      */
-    onPreventChange?(stepIndex: number): any;
+    onPreventChange?(stepIndex: number): void;
     /**
      * Callback called when all the steps are completed.
      */
-    onComplete?(): any;
+    onComplete?(): void;
     /**
-     * Intro.js options.”
+     * Intro.js options.
      */
     options?: Options;
   }
@@ -198,23 +104,26 @@ declare module 'intro.js-react' {
      */
     enabled?: boolean;
     /**
-     * All the hints.	Hint[]
+     * All the hints.
      */
     hints: Hint[];
     /**
      * Callback called when a hint is clicked.
      */
-    onClick?(): any;
+    onClick?(): void;
     /**
      * Callback called when a hint is closed.
      */
-    onClose?(): any;
+    onClose?(): void;
     /**
      * Intro.js options.
      */
     options?: Options;
   }
 
-  function Steps(props: StepsProps): JSX.Element;
-  function Hints(props: HintsProps): JSX.Element;
+  export class Steps extends React.Component<StepsProps> {
+    introJs: IntroJs;
+  }
+
+  export class Hints extends React.Component<HintsProps> {}
 }
