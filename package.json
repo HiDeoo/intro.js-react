@@ -80,6 +80,7 @@
   },
   "files": [
     "lib",
-    "src"
+    "src",
+    "index.d.ts"
   ]
 }
