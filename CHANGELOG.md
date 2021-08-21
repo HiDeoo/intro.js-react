@@ -1,3 +1,7 @@
+## 0.5.0
+
+* Bump peer dependencies versions.
+
 ## 0.4.0
 
 * Add TypeScript type declarations.
