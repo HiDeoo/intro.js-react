@@ -1,0 +1,29 @@
+name: integration
+
+on: [push, pull_request]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '12'
+
+      - name: Install dependencies
+        run: yarn
+
+      - name: Lint
+        run: yarn lint
+
+      - name: Test with coverage
+        run: yarn coveralls
+
+      - name: Coveralls
+        uses: coverallsapp/github-action@master
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
