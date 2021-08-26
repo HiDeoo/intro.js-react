@@ -1,6 +1,6 @@
 # intro.js-react
 
-[![Build Status](https://travis-ci.org/HiDeoo/intro.js-react.svg?branch=master)](https://travis-ci.org/HiDeoo/intro.js-react) [![Coverage Status](https://coveralls.io/repos/github/HiDeoo/intro.js-react/badge.svg?branch=master)](https://coveralls.io/github/HiDeoo/intro.js-react?branch=master)
+[![integration](https://github.com/HiDeoo/intro.js-react/actions/workflows/integration.yml/badge.svg)](https://github.com/HiDeoo/intro.js-react/actions/workflows/integration.yml) [![Coverage Status](https://coveralls.io/repos/github/HiDeoo/intro.js-react/badge.svg?branch=master)](https://coveralls.io/github/HiDeoo/intro.js-react?branch=master)
 
 A small React wrapper around [Intro.js](http://introjs.com/). The wrapper provides support for both steps and hints.
 
