@@ -122,7 +122,8 @@ declare module 'intro.js-react' {
   }
 
   export class Steps extends React.Component<StepsProps> {
-    introJs: IntroJs;
+    public introJs: IntroJs;
+    public updateStepElement(stepIndex: number);
   }
 
   export class Hints extends React.Component<HintsProps> {}
