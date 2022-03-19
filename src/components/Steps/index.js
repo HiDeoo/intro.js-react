@@ -19,7 +19,7 @@ export default class Steps extends Component {
     initialStep: PropTypes.number.isRequired,
     steps: PropTypes.arrayOf(
       PropTypes.shape({
-        element: PropTypes.string,
+        element: PropTypes.oneOfType([PropTypes.string, PropTypes.instanceOf(Element)]),
         intro: PropTypes.node.isRequired,
         position: introJsPropTypes.tooltipPosition,
         tooltipClass: PropTypes.string,
