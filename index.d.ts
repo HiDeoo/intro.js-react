@@ -123,7 +123,7 @@ declare module 'intro.js-react' {
 
   export class Steps extends React.Component<StepsProps> {
     public introJs: IntroJs;
-    public updateStepElement(stepIndex: number);
+    public updateStepElement(stepIndex: number): void;
   }
 
   export class Hints extends React.Component<HintsProps> {}
