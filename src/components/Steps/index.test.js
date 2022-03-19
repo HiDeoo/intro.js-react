@@ -256,7 +256,7 @@ describe('Steps', () => {
     expect(onBeforeChange).toHaveBeenCalledTimes(1);
   });
 
-  test('should call the onBeforeChange callback with the step number', () => {
+  test('should call the onBeforeChange callback with the step number and the new element', () => {
     const onBeforeChange = jest.fn();
 
     const wrapper = shallow(<Steps initialStep={0} steps={steps} onExit={() => {}} onBeforeChange={onBeforeChange} />, {
@@ -264,7 +264,7 @@ describe('Steps', () => {
     });
     wrapper.setProps({ enabled: true });
 
-    expect(onBeforeChange).toHaveBeenCalledWith(1);
+    expect(onBeforeChange).toHaveBeenCalledWith(1, null);
   });
 
   test('should call the onPreventChange callback if onBeforeChange returned false to prevent transition', () => {

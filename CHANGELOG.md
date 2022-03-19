@@ -1,5 +1,6 @@
 ## Unreleased
 
+* The `onBeforeChange` callback now receives the `nextElement` as second parameter.
 * Add missing `updateStepElement()` to the TypeScript type declarations.
 
 ## 0.5.0
