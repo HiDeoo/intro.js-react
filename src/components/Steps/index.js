@@ -134,7 +134,7 @@ export default class Steps extends Component {
    * Triggered before changing step.
    * @return {Boolean} Returning `false` will prevent the step transition.
    */
-  onBeforeChange = () => {
+  onBeforeChange = nextElement => {
     if (!this.isVisible) {
       return true;
     }
@@ -142,7 +142,7 @@ export default class Steps extends Component {
     const { onBeforeChange, onPreventChange } = this.props;
 
     if (onBeforeChange) {
-      const continueStep = onBeforeChange(this.introJs._currentStep);
+      const continueStep = onBeforeChange(this.introJs._currentStep, nextElement);
 
       if (continueStep === false && onPreventChange) {
         setTimeout(() => {
