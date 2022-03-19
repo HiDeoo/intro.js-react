@@ -2,6 +2,7 @@
 
 * The `onBeforeChange` callback now receives the `nextElement` as second parameter.
 * Add missing `updateStepElement()` to the TypeScript type declarations.
+* Fix Steps's `element` parameter type to also accept an `HTMLElement`.
 
 ## 0.5.0
 

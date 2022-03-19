@@ -4,9 +4,9 @@ declare module 'intro.js-react' {
 
   interface Step {
     /**
-     * CSS selector to use for the step.
+     * CSS selector or element to use for the step.
      */
-    element?: string;
+    element?: string | HTMLElement | Element;
     /**
      * The tooltip content.
      */
