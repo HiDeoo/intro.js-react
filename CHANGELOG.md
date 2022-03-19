@@ -1,3 +1,7 @@
+## Unreleased
+
+* Add missing `updateStepElement()` to the TypeScript type declarations.
+
 ## 0.5.0
 
 * Bump peer dependencies versions.
