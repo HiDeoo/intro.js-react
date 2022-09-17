@@ -1,3 +1,7 @@
+## Unreleased
+
+* Add missing TypeScript `title` attribute type to steps.
+
 ## 0.6.0
 
 * The `onBeforeChange` callback now receives the `nextElement` as second parameter.
