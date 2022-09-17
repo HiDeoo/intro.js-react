@@ -15,12 +15,10 @@ declare module 'intro.js-react' {
      * Position of the tooltip.
      */
     position?: string;
-
     /**
      * The tooltip title.
     */
     title?: string
-
     /**
      * CSS class of the tooltip.
      */
