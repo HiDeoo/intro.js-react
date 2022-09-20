@@ -4,6 +4,7 @@ import renderer from 'react-test-renderer';
 import { shallow } from 'enzyme';
 
 import Steps from './index';
+import * as server from '../../helpers/server';
 
 jest.useFakeTimers();
 
@@ -343,5 +344,13 @@ describe('Steps', () => {
     wrapper.instance().updateStepElement(0);
 
     expect(wrapper.instance().introJs._introItems[0].element).toEqual(expect.any(HTMLDivElement));
+  });
+
+  test('should not install intro.js during SSR', () => {
+    jest.spyOn(server, 'isServer').mockReturnValueOnce(true);
+
+    const wrapper = shallow(<Steps initialStep={0} steps={steps} onExit={() => {}} />);
+
+    expect(wrapper.instance().introJs).toBe(null);
   });
 });

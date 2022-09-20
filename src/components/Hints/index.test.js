@@ -3,6 +3,7 @@ import renderer from 'react-test-renderer';
 import { shallow } from 'enzyme';
 
 import Hints from './index';
+import * as server from '../../helpers/server';
 
 /**
  * Hints.
@@ -118,5 +119,13 @@ describe('Hints', () => {
     const wrapper = shallow(<Hints hints={hints} onClose={onClose} />);
 
     expect(wrapper.instance().introJs.onHintClose).toBe(onClose);
+  });
+
+  test('should not install intro.js during SSR', () => {
+    jest.spyOn(server, 'isServer').mockReturnValueOnce(true);
+
+    const wrapper = shallow(<Hints hints={hints} />);
+
+    expect(wrapper.instance().introJs).toBe(null);
   });
 });

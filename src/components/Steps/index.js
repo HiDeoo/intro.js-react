@@ -5,6 +5,7 @@ import { renderToStaticMarkup } from 'react-dom/server';
 
 import * as introJsPropTypes from '../../helpers/proptypes';
 import * as introJsDefaultProps from '../../helpers/defaultProps';
+import { isServer } from '../../helpers/server';
 
 /**
  * Intro.js Steps Component.
@@ -221,6 +222,10 @@ export default class Steps extends Component {
    * Installs Intro.js.
    */
   installIntroJs() {
+    if (isServer()) {
+      return;
+    }
+
     this.introJs = introJs();
 
     this.introJs.onexit(this.onExit);
