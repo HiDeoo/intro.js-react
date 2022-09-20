@@ -21,6 +21,7 @@ export default class Steps extends Component {
       PropTypes.shape({
         element: PropTypes.oneOfType([
           PropTypes.string,
+          /* istanbul ignore next */
           typeof Element === 'undefined' ? PropTypes.any : PropTypes.instanceOf(Element),
         ]),
         intro: PropTypes.node.isRequired,
