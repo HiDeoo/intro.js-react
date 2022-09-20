@@ -1,7 +1,7 @@
-## Unreleased
+## 0.7.0
 
 * Add missing TypeScript `title` attribute type to steps.
-* Fix various issues related with Next.js and SSR.
+* Fix various issues with Next.js and SSR.
 
 ## 0.6.0
 
