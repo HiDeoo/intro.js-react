@@ -82,7 +82,7 @@ declare module 'intro.js-react' {
      * If you want to prevent the transition to the next / previous step, you can return false in this callback
      * (available since intro.js 2.8.0).
      */
-    onBeforeChange?(nextStepIndex: number, nextElement: Element): void | false;
+    onBeforeChange?(nextStepIndex: number, nextElement: Element): void | false | Promise<void | false>;
     /**
      * Callback called after changing the current step.
      */

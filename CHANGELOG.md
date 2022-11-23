@@ -1,3 +1,7 @@
+## Unreleased
+
+* Update TypeScript `onBeforeChange` return type to support promises.
+
 ## 0.7.0
 
 * Add missing TypeScript `title` attribute type to steps.
