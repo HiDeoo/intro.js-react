@@ -1,6 +1,6 @@
 {
   "name": "intro.js-react",
-  "version": "0.7.0",
+  "version": "0.7.1",
   "description": "Intro.js React Wrapper",
   "main": "lib/index.js",
   "types": "index.d.ts",
