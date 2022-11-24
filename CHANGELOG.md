@@ -1,4 +1,4 @@
-## Unreleased
+## 0.7.1
 
 * Update TypeScript `onBeforeChange` return type to support promises.
 
