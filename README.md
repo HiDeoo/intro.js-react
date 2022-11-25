@@ -183,7 +183,7 @@ If for some reasons you need to use the [Intro.js API](http://introjs.com/docs/)
 ```js
 <Hints
   enabled={hintsEnabled}
-  steps={hints}
+  hints={hints}
   ref={hints => (this.hints = hints)}
 />
 ```
