@@ -1,6 +1,7 @@
 import introJs from 'intro.js';
 import PropTypes from 'prop-types';
-import { Component } from 'react';
+import { renderToStaticMarkup } from 'react-dom/server';
+import { Component, isValidElement } from 'react';
 
 import * as introJsPropTypes from '../../helpers/proptypes';
 import * as introJsDefaultProps from '../../helpers/defaultProps';
@@ -19,7 +20,7 @@ export default class Hints extends Component {
     hints: PropTypes.arrayOf(
       PropTypes.shape({
         element: PropTypes.string.isRequired,
-        hint: PropTypes.string.isRequired,
+        hint: PropTypes.node.isRequired,
         hintPosition: introJsPropTypes.hintPosition,
       })
     ).isRequired,
@@ -119,7 +120,18 @@ export default class Hints extends Component {
     // We need to remove all hints otherwise new hints won't be added.
     this.introJs.removeHints();
 
-    this.introJs.setOptions({ ...options, hints });
+    this.introJs.setOptions({
+      ...options,
+      hints: hints.map(hint => {
+        if (isValidElement(hint.hint)) {
+          return {
+            ...hint,
+            hint: renderToStaticMarkup(hint.hint),
+          };
+        }
+        return hint;
+      }),
+    });
 
     this.isConfigured = true;
   }

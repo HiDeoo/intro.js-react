@@ -23,6 +23,24 @@ describe('Hints', () => {
     expect(tree).toMatchSnapshot();
   });
 
+  test('should render jsx', () => {
+    const tree = renderer
+      .create(
+        <Hints
+          enabled
+          hints={[
+            {
+              element: '.test',
+              hint: <b>test</b>,
+            },
+          ]}
+        />
+      )
+      .toJSON();
+
+    expect(tree).toMatchSnapshot();
+  });
+
   test('should not configure Intro.js at mount time if not enabled', () => {
     const wrapper = shallow(<Hints hints={hints} />, {
       lifecycleExperimental: true,
