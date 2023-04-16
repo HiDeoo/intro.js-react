@@ -3,10 +3,12 @@
   "version": "0.7.1",
   "description": "Intro.js React Wrapper",
   "main": "lib/index.js",
+  "module": "esm/index.js",
   "types": "index.d.ts",
   "scripts": {
-    "prebuild": "rimraf lib/*",
+    "prebuild": "rimraf lib/* && rimraf esm/*",
     "build": "babel --ignore '**/*.test.js' --out-dir lib src",
+    "build:esm": "babel --ignore '**/*.test.js' --out-dir esm --config-file ./.babelrc-esm --no-babelrc src",
     "build:watch": "npm run build -- --watch",
     "lint": "eslint src",
     "test": "jest",
@@ -14,7 +16,7 @@
     "test:coverage": "jest --coverage && open coverage/index.html",
     "test:ci": "jest --coverage",
     "precommit": "lint-staged",
-    "prepublish": "npm run build"
+    "prepublish": "npm run build && npm run build:esm"
   },
   "devDependencies": {
     "@babel/cli": "7.8.4",
@@ -80,6 +82,7 @@
   },
   "files": [
     "lib",
+    "esm",
     "src",
     "index.d.ts"
   ]
