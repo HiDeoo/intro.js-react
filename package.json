@@ -8,16 +8,21 @@
   "exports": {
     "./package.json": "./package.json",
     ".": {
-      "types": "./index.d.ts",
-      "import": "./dist/esm/index.mjs",
-      "default": "./dist/cjs/index.cjs"
+      "import": {
+        "types": "./dist/esm/index.d.mts",
+        "default": "./dist/esm/index.mjs"
+      },
+      "default": {
+        "types": "./dist/cjs/index.d.cts",
+        "default": "./dist/cjs/index.cjs"
+      }
     }
   },
   "scripts": {
     "prebuild": "rimraf lib/* && rimraf esm/*",
     "build": "yarn build:cjs && yarn build:esm",
-    "build:cjs": "CJS=true babel --ignore '**/*.test.js' --out-dir dist/cjs --out-file-extension .cjs src && cp dist/cjs/index.cjs dist/cjs/index.js",
-    "build:esm": "babel --ignore '**/*.test.js' --out-dir dist/esm --out-file-extension .mjs src && cp dist/esm/index.mjs dist/esm/index.js",
+    "build:cjs": "CJS=true babel --ignore '**/*.test.js' --out-dir dist/cjs --out-file-extension .cjs src && cp dist/cjs/index.cjs dist/cjs/index.js && cp index.d.ts dist/cjs/index.d.cts",
+    "build:esm": "babel --ignore '**/*.test.js' --out-dir dist/esm --out-file-extension .mjs src && cp dist/esm/index.mjs dist/esm/index.js && cp index.d.ts dist/esm/index.d.mts",
     "build:watch": "npm run build:esm -- --watch",
     "lint": "eslint src",
     "test": "jest",
