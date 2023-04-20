@@ -6,7 +6,7 @@ module.exports = api => {
       [
         '@babel/preset-env',
         {
-          targets: 'last 2 versions, not dead',
+          targets: '> 0.5%, last 2 versions, Firefox ESR, not dead',
           modules: process.env.CJS ? 'commonjs' : false,
         },
       ],
