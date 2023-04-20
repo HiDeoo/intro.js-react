@@ -2,7 +2,7 @@
   "name": "intro.js-react",
   "version": "0.7.1",
   "description": "Intro.js React Wrapper",
-  "main": "dist/lib/index.js",
+  "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
   "types": "index.d.ts",
   "exports": {
@@ -19,7 +19,7 @@
     }
   },
   "scripts": {
-    "prebuild": "rimraf lib/* && rimraf esm/*",
+    "prebuild": "rimraf dist",
     "build": "yarn build:cjs && yarn build:esm",
     "build:cjs": "CJS=true babel --ignore '**/*.test.js' --out-dir dist/cjs --out-file-extension .cjs src && cp dist/cjs/index.cjs dist/cjs/index.js && cp index.d.ts dist/cjs/index.d.cts",
     "build:esm": "babel --ignore '**/*.test.js' --out-dir dist/esm --out-file-extension .mjs src && cp dist/esm/index.mjs dist/esm/index.js && cp index.d.ts dist/esm/index.d.mts",
