@@ -1,17 +1,24 @@
 module.exports = api => {
+  const isTest = api.env('test');
+
   api.cache(true);
 
-  return {
+  const config = {
     presets: [
       [
         '@babel/preset-env',
         {
           targets: '> 0.5%, last 2 versions, Firefox ESR, not dead',
-          modules: process.env.CJS ? 'commonjs' : false,
+          modules: process.env.CJS || isTest ? 'commonjs' : false,
         },
       ],
       '@babel/preset-react',
     ],
-    plugins: [['babel-plugin-add-import-extension', { extension: process.env.CJS ? 'cjs' : 'mjs' }]],
   };
+
+  if (!isTest) {
+    config.plugins = [['babel-plugin-add-import-extension', { extension: process.env.CJS ? 'cjs' : 'mjs' }]];
+  }
+
+  return config;
 };
