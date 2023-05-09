@@ -1,3 +1,11 @@
+## 1.0.0
+
+### &nbsp;&nbsp;&nbsp;🚨 Breaking Changes
+
+* 💥 Add ESM/CJS package compatibility.
+
+This new major release [adds support for ESM](https://github.com/HiDeoo/intro.js-react/pull/104) to the published package while preserving CJS compatibility. The `main/module/exports` fields in `package.json` are now pointing to new artifacts: `dist/esm/index.mjs` which is an ESM file that most modern tooling should pick up, `dist/cjs/index.cjs` which is a CJS file and `dist/esm/index.js` which is a copy of the ESM file with a `.js` extension to support Webpack 4. Thanks to [@lewisl9029](https://github.com/lewisl9029) for the contribution.
+
 ## 0.7.1
 
 * Update TypeScript `onBeforeChange` return type to support promises.

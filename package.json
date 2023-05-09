@@ -1,6 +1,6 @@
 {
   "name": "intro.js-react",
-  "version": "0.7.1",
+  "version": "1.0.0",
   "description": "Intro.js React Wrapper",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
