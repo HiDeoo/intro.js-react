@@ -1,3 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Hints should render jsx 1`] = `null`;
+
 exports[`Hints should render nothing 1`] = `null`;
