@@ -23,14 +23,14 @@ You can find a small example [here on codesandbox.io](https://codesandbox.io/emb
 Install using Npm *(don't forget to add the `--save` option if you're still using npm < 5)*:
 
 ```sh
-$ npm install intro.js-react
+npm install intro.js-react
 ```
 
 Or Yarn:
 
 
 ```sh
-$ yarn add intro.js-react
+yarn add intro.js-react
 ```
 
 Make sure to have [React](https://facebook.github.io/react/) & [Intro.js](http://introjs.com/) installed (they're peer dependencies) and the Intro.js CSS definitions [properly loaded](http://introjs.com/docs/getting-started/install) into your project.
